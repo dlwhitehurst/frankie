@@ -1,0 +1,16 @@
+- name: Join nodes to the Kubernetes cluster 
+  hosts: nodes 
+  become: true
+  tasks:
+    - name: Copy join script
+      ansible.builtin.copy:
+        src: files/join.sh
+        dest: /home/ubuntu
+        owner: root
+        group: root
+        mode: '0700'
+
+    - name: Run join script
+      ansible.builtin.command: /home/ubuntu/join.sh
+      become: true
+

@@ -1,0 +1,144 @@
+- name: Provision Raspberry Pi nodes for Kubeadm installation
+  hosts: all 
+  become: true
+  tasks:
+    - name: Update the Ubuntu servers 
+      ansible.builtin.command: apt update 
+
+    - name: Upgrade Ubuntu System Packages
+      ansible.builtin.apt:
+        upgrade: full
+
+    - name: Reboot
+      ansible.builtin.reboot:
+        reboot_timeout: 1800
+
+    - name: Install a list of packages
+      ansible.builtin.apt:
+        pkg:
+        - curl 
+        - wget 
+        - apt-transport-https 
+        - gnupg2 
+        - software-properties-common
+        - ca-certificates 
+
+    - name: remove k8s.gpg file (for idempotency)
+      ansible.builtin.file:
+        path: /etc/apt/trusted.gpg.d/k8s.gpg
+        state: absent
+
+    - name: Set up to get Kubernetes packages 
+      ansible.builtin.shell: |
+        curl -fsSL  https://packages.cloud.google.com/apt/doc/apt-key.gpg|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/k8s.gpg
+        curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+        echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+      args:
+        executable: /bin/bash
+
+    - name: Update the Ubuntu servers 
+      ansible.builtin.command: apt update 
+
+    - name: Allow kubeadm to be installed (for idempotency) 
+      ansible.builtin.dpkg_selections:
+        name: kubeadm 
+        selection: install
+
+    - name: Allow kubelet to be installed (for idempotency) 
+      ansible.builtin.dpkg_selections:
+        name: kubelet
+        selection: install
+
+    - name: Allow kubectl to be installed (for idempotency) 
+      ansible.builtin.dpkg_selections:
+        name: kubectl
+        selection: install
+
+    - name: Install a list of packages
+      ansible.builtin.apt:
+        pkg:
+        - kubeadm
+        - kubelet
+        - kubectl 
+
+    - name: Hold kubeadm
+      ansible.builtin.dpkg_selections:
+        name: kubeadm
+        selection: hold
+
+    - name: Hold kubelet
+      ansible.builtin.dpkg_selections:
+        name: kubelet
+        selection: hold
+
+    - name: Hold kubectl
+      ansible.builtin.dpkg_selections:
+        name: kubectl
+        selection: hold
+
+    - name: Swap off 
+      ansible.builtin.command: swapoff -a 
+      become: true
+
+    - name: Comment fstab
+      ansible.builtin.command: sed -i '/swap/s/^/#/g' /etc/fstab
+      args:
+        warn: false
+      become: true
+
+    - name: Configure and load kernel modules (all nodes) 
+      ansible.builtin.shell: |
+        sudo tee /etc/modules-load.d/containerd.conf <<EOF
+        overlay
+        br_netfilter
+        EOF
+        sudo modprobe overlay
+        sudo modprobe br_netfilter
+      args:
+        executable: /bin/bash
+
+
+    - name: Bridge network iptables and set kernel parameters 
+      ansible.builtin.shell: |
+        sudo tee /etc/sysctl.d/kubernetes.conf<<EOF
+        net.bridge.bridge-nf-call-ip6tables = 1
+        net.bridge.bridge-nf-call-iptables = 1
+        net.ipv4.ip_forward = 1
+        EOF
+        sudo sysctl --system
+      args:
+        executable: /bin/bash
+
+    - name: remove docker.gpg file (for idempotency)
+      ansible.builtin.file:
+        path: /etc/apt/trusted.gpg.d/docker.gpg
+        state: absent
+
+    - name: add docker repo key 
+      ansible.builtin.shell: |
+        sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/docker.gpg
+        sudo add-apt-repository -y "deb [arch=arm64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+      args:
+        executable: /bin/bash
+
+    - name: Update the Ubuntu servers 
+      ansible.builtin.command: apt update 
+
+    - name: install containerd 
+      ansible.builtin.apt:
+        name: containerd.io 
+
+    - name: configure containerd and start
+      ansible.builtin.shell: |
+        #sudo su -
+        sudo mkdir -p /etc/containerd
+        sudo containerd config default>/etc/containerd/config.toml
+        sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
+
+        # restart containerd
+        sudo systemctl restart containerd
+        sudo systemctl enable containerd
+      args:
+        executable: /bin/bash
+
+

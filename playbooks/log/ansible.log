@@ -1,0 +1,223 @@
+2023-01-29 20:34:28,471 p=2544951 u=david n=ansible | PLAY [Kubeadm initialization] *********************************************************************************************************************************
+2023-01-29 20:34:28,482 p=2544951 u=david n=ansible | TASK [Gathering Facts] ****************************************************************************************************************************************
+2023-01-29 20:34:31,610 p=2544951 u=david n=ansible | ok: [rpmaster]
+2023-01-29 20:34:31,641 p=2544951 u=david n=ansible | TASK [Initialize] *********************************************************************************************************************************************
+2023-01-29 20:34:48,456 p=2544951 u=david n=ansible |  [ERROR]: User interrupted execution
+
+2023-01-30 10:32:48,394 p=2591517 u=david n=ansible | PLAY [Machines in all /etc/hosts file] ************************************************************************************************************************
+2023-01-30 10:32:48,406 p=2591517 u=david n=ansible | TASK [Gathering Facts] ****************************************************************************************************************************************
+2023-01-30 10:32:53,926 p=2591517 u=david n=ansible | ok: [rpmaster]
+2023-01-30 10:32:53,945 p=2591517 u=david n=ansible | TASK [Append all hosts] ***************************************************************************************************************************************
+2023-01-30 10:32:54,903 p=2591517 u=david n=ansible | changed: [rpmaster]
+2023-01-30 10:32:54,926 p=2591517 u=david n=ansible | PLAY RECAP ****************************************************************************************************************************************************
+2023-01-30 10:32:54,926 p=2591517 u=david n=ansible | rpmaster                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-01-30 10:33:56,391 p=2591626 u=david n=ansible | PLAY [Machines in all /etc/hosts file] ************************************************************************************************************************
+2023-01-30 10:33:56,404 p=2591626 u=david n=ansible | TASK [Gathering Facts] ****************************************************************************************************************************************
+2023-01-30 10:34:01,934 p=2591626 u=david n=ansible | ok: [rpnode1]
+2023-01-30 10:34:01,977 p=2591626 u=david n=ansible | ok: [rpnode2]
+2023-01-30 10:34:07,231 p=2591626 u=david n=ansible | ok: [rpnode4]
+2023-01-30 10:34:07,236 p=2591626 u=david n=ansible | ok: [rpnode3]
+2023-01-30 10:34:07,266 p=2591626 u=david n=ansible | TASK [Append all hosts] ***************************************************************************************************************************************
+2023-01-30 10:34:08,202 p=2591626 u=david n=ansible | changed: [rpnode1]
+2023-01-30 10:34:08,212 p=2591626 u=david n=ansible | changed: [rpnode2]
+2023-01-30 10:34:08,962 p=2591626 u=david n=ansible | changed: [rpnode4]
+2023-01-30 10:34:08,968 p=2591626 u=david n=ansible | changed: [rpnode3]
+2023-01-30 10:34:08,986 p=2591626 u=david n=ansible | PLAY RECAP ****************************************************************************************************************************************************
+2023-01-30 10:34:08,987 p=2591626 u=david n=ansible | rpnode1                    : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-01-30 10:34:08,987 p=2591626 u=david n=ansible | rpnode2                    : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-01-30 10:34:08,987 p=2591626 u=david n=ansible | rpnode3                    : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-01-30 10:34:08,987 p=2591626 u=david n=ansible | rpnode4                    : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-01-30 10:35:00,831 p=2591811 u=david n=ansible | PLAY [Provision Raspberry Pi nodes for Kubeadm installation] **************************************************************************************************
+2023-01-30 10:35:00,844 p=2591811 u=david n=ansible | TASK [Gathering Facts] ****************************************************************************************************************************************
+2023-01-30 10:35:03,988 p=2591811 u=david n=ansible | ok: [rpnode2]
+2023-01-30 10:35:03,994 p=2591811 u=david n=ansible | ok: [rpnode1]
+2023-01-30 10:35:05,847 p=2591811 u=david n=ansible | ok: [rpmaster]
+2023-01-30 10:35:06,563 p=2591811 u=david n=ansible | ok: [rpnode4]
+2023-01-30 10:35:06,591 p=2591811 u=david n=ansible | ok: [rpnode3]
+2023-01-30 10:35:06,613 p=2591811 u=david n=ansible | TASK [Update the Ubuntu servers] ******************************************************************************************************************************
+2023-01-30 10:35:36,993 p=2591811 u=david n=ansible | changed: [rpnode2]
+2023-01-30 10:35:39,080 p=2591811 u=david n=ansible | changed: [rpmaster]
+2023-01-30 10:35:40,167 p=2591811 u=david n=ansible | changed: [rpnode1]
+2023-01-30 10:36:08,165 p=2591811 u=david n=ansible | changed: [rpnode3]
+2023-01-30 10:36:10,753 p=2591811 u=david n=ansible | changed: [rpnode4]
+2023-01-30 10:36:10,774 p=2591811 u=david n=ansible | TASK [Upgrade Ubuntu System Packages] *************************************************************************************************************************
+2023-01-30 10:46:05,660 p=2591811 u=david n=ansible | changed: [rpnode1]
+2023-01-30 10:46:06,603 p=2591811 u=david n=ansible | changed: [rpnode2]
+2023-01-30 10:46:09,078 p=2591811 u=david n=ansible | changed: [rpmaster]
+2023-01-30 10:54:51,000 p=2591811 u=david n=ansible | changed: [rpnode3]
+2023-01-30 10:57:10,154 p=2591811 u=david n=ansible | changed: [rpnode4]
+2023-01-30 10:57:10,171 p=2591811 u=david n=ansible | TASK [Reboot] *************************************************************************************************************************************************
+2023-01-30 10:57:54,041 p=2591811 u=david n=ansible | changed: [rpnode2]
+2023-01-30 10:57:58,678 p=2591811 u=david n=ansible | changed: [rpmaster]
+2023-01-30 10:57:58,765 p=2591811 u=david n=ansible | changed: [rpnode1]
+2023-01-30 10:58:20,006 p=2591811 u=david n=ansible | changed: [rpnode4]
+2023-01-30 10:58:23,401 p=2591811 u=david n=ansible | changed: [rpnode3]
+2023-01-30 10:58:23,418 p=2591811 u=david n=ansible | TASK [Install a list of packages] *****************************************************************************************************************************
+2023-01-30 10:58:48,185 p=2591811 u=david n=ansible | changed: [rpmaster]
+2023-01-30 10:58:48,381 p=2591811 u=david n=ansible | changed: [rpnode1]
+2023-01-30 10:58:48,387 p=2591811 u=david n=ansible | changed: [rpnode2]
+2023-01-30 10:59:11,020 p=2591811 u=david n=ansible | changed: [rpnode4]
+2023-01-30 10:59:11,147 p=2591811 u=david n=ansible | changed: [rpnode3]
+2023-01-30 10:59:11,161 p=2591811 u=david n=ansible | TASK [remove k8s.gpg file (for idempotency)] ******************************************************************************************************************
+2023-01-30 10:59:12,111 p=2591811 u=david n=ansible | ok: [rpmaster]
+2023-01-30 10:59:12,113 p=2591811 u=david n=ansible | ok: [rpnode1]
+2023-01-30 10:59:12,115 p=2591811 u=david n=ansible | ok: [rpnode2]
+2023-01-30 10:59:12,873 p=2591811 u=david n=ansible | ok: [rpnode3]
+2023-01-30 10:59:12,875 p=2591811 u=david n=ansible | ok: [rpnode4]
+2023-01-30 10:59:12,886 p=2591811 u=david n=ansible | TASK [Set up to get Kubernetes packages] **********************************************************************************************************************
+2023-01-30 10:59:14,757 p=2591811 u=david n=ansible | [WARNING]: Consider using the get_url or uri module rather than running 'curl'.  If you need to use command because get_url or uri is insufficient you can add
+'warn: false' to this command task or set 'command_warnings=False' in ansible.cfg to get rid of this message.
+
+2023-01-30 10:59:14,758 p=2591811 u=david n=ansible | changed: [rpmaster]
+2023-01-30 10:59:14,814 p=2591811 u=david n=ansible | changed: [rpnode1]
+2023-01-30 10:59:14,818 p=2591811 u=david n=ansible | changed: [rpnode2]
+2023-01-30 10:59:16,599 p=2591811 u=david n=ansible | changed: [rpnode3]
+2023-01-30 10:59:16,660 p=2591811 u=david n=ansible | changed: [rpnode4]
+2023-01-30 10:59:16,672 p=2591811 u=david n=ansible | TASK [Update the Ubuntu servers] ******************************************************************************************************************************
+2023-01-30 10:59:24,710 p=2591811 u=david n=ansible | changed: [rpnode2]
+2023-01-30 10:59:24,796 p=2591811 u=david n=ansible | changed: [rpnode1]
+2023-01-30 10:59:24,900 p=2591811 u=david n=ansible | changed: [rpmaster]
+2023-01-30 10:59:32,371 p=2591811 u=david n=ansible | changed: [rpnode3]
+2023-01-30 10:59:32,444 p=2591811 u=david n=ansible | changed: [rpnode4]
+2023-01-30 10:59:32,461 p=2591811 u=david n=ansible | TASK [Allow kubeadm to be installed (for idempotency)] ********************************************************************************************************
+2023-01-30 10:59:33,523 p=2591811 u=david n=ansible | changed: [rpnode2]
+2023-01-30 10:59:33,532 p=2591811 u=david n=ansible | changed: [rpmaster]
+2023-01-30 10:59:33,542 p=2591811 u=david n=ansible | changed: [rpnode1]
+2023-01-30 10:59:34,348 p=2591811 u=david n=ansible | changed: [rpnode3]
+2023-01-30 10:59:34,362 p=2591811 u=david n=ansible | changed: [rpnode4]
+2023-01-30 10:59:34,380 p=2591811 u=david n=ansible | TASK [Allow kubelet to be installed (for idempotency)] ********************************************************************************************************
+2023-01-30 10:59:35,244 p=2591811 u=david n=ansible | changed: [rpmaster]
+2023-01-30 10:59:35,282 p=2591811 u=david n=ansible | changed: [rpnode1]
+2023-01-30 10:59:35,301 p=2591811 u=david n=ansible | changed: [rpnode2]
+2023-01-30 10:59:38,831 p=2591811 u=david n=ansible | changed: [rpnode4]
+2023-01-30 10:59:39,133 p=2591811 u=david n=ansible | changed: [rpnode3]
+2023-01-30 10:59:39,153 p=2591811 u=david n=ansible | TASK [Allow kubectl to be installed (for idempotency)] ********************************************************************************************************
+2023-01-30 10:59:40,046 p=2591811 u=david n=ansible | changed: [rpmaster]
+2023-01-30 10:59:40,052 p=2591811 u=david n=ansible | changed: [rpnode1]
+2023-01-30 10:59:40,068 p=2591811 u=david n=ansible | changed: [rpnode2]
+2023-01-30 10:59:40,938 p=2591811 u=david n=ansible | changed: [rpnode3]
+2023-01-30 10:59:40,946 p=2591811 u=david n=ansible | changed: [rpnode4]
+2023-01-30 10:59:40,959 p=2591811 u=david n=ansible | TASK [Install a list of packages] *****************************************************************************************************************************
+2023-01-30 11:00:40,087 p=2591811 u=david n=ansible | changed: [rpnode1]
+2023-01-30 11:00:40,588 p=2591811 u=david n=ansible | changed: [rpmaster]
+2023-01-30 11:00:41,133 p=2591811 u=david n=ansible | changed: [rpnode2]
+2023-01-30 11:01:18,961 p=2591811 u=david n=ansible | changed: [rpnode3]
+2023-01-30 11:01:38,914 p=2591811 u=david n=ansible | changed: [rpnode4]
+2023-01-30 11:01:38,938 p=2591811 u=david n=ansible | TASK [Hold kubeadm] *******************************************************************************************************************************************
+2023-01-30 11:01:39,808 p=2591811 u=david n=ansible | changed: [rpmaster]
+2023-01-30 11:01:39,842 p=2591811 u=david n=ansible | changed: [rpnode1]
+2023-01-30 11:01:39,873 p=2591811 u=david n=ansible | changed: [rpnode2]
+2023-01-30 11:01:40,849 p=2591811 u=david n=ansible | changed: [rpnode3]
+2023-01-30 11:01:40,963 p=2591811 u=david n=ansible | changed: [rpnode4]
+2023-01-30 11:01:40,973 p=2591811 u=david n=ansible | TASK [Hold kubelet] *******************************************************************************************************************************************
+2023-01-30 11:01:41,865 p=2591811 u=david n=ansible | changed: [rpnode1]
+2023-01-30 11:01:41,866 p=2591811 u=david n=ansible | changed: [rpmaster]
+2023-01-30 11:01:41,887 p=2591811 u=david n=ansible | changed: [rpnode2]
+2023-01-30 11:01:42,764 p=2591811 u=david n=ansible | changed: [rpnode3]
+2023-01-30 11:01:43,693 p=2591811 u=david n=ansible | changed: [rpnode4]
+2023-01-30 11:01:43,714 p=2591811 u=david n=ansible | TASK [Hold kubectl] *******************************************************************************************************************************************
+2023-01-30 11:01:44,600 p=2591811 u=david n=ansible | changed: [rpmaster]
+2023-01-30 11:01:44,638 p=2591811 u=david n=ansible | changed: [rpnode1]
+2023-01-30 11:01:44,653 p=2591811 u=david n=ansible | changed: [rpnode2]
+2023-01-30 11:01:45,561 p=2591811 u=david n=ansible | changed: [rpnode4]
+2023-01-30 11:01:45,577 p=2591811 u=david n=ansible | changed: [rpnode3]
+2023-01-30 11:01:45,596 p=2591811 u=david n=ansible | TASK [Swap off] ***********************************************************************************************************************************************
+2023-01-30 11:01:46,368 p=2591811 u=david n=ansible | changed: [rpmaster]
+2023-01-30 11:01:46,399 p=2591811 u=david n=ansible | changed: [rpnode1]
+2023-01-30 11:01:46,416 p=2591811 u=david n=ansible | changed: [rpnode2]
+2023-01-30 11:01:47,238 p=2591811 u=david n=ansible | changed: [rpnode3]
+2023-01-30 11:01:47,262 p=2591811 u=david n=ansible | changed: [rpnode4]
+2023-01-30 11:01:47,274 p=2591811 u=david n=ansible | TASK [Comment fstab] ******************************************************************************************************************************************
+2023-01-30 11:01:48,071 p=2591811 u=david n=ansible | changed: [rpnode1]
+2023-01-30 11:01:48,072 p=2591811 u=david n=ansible | changed: [rpmaster]
+2023-01-30 11:01:48,072 p=2591811 u=david n=ansible | changed: [rpnode2]
+2023-01-30 11:01:48,910 p=2591811 u=david n=ansible | changed: [rpnode3]
+2023-01-30 11:01:48,918 p=2591811 u=david n=ansible | changed: [rpnode4]
+2023-01-30 11:01:48,937 p=2591811 u=david n=ansible | TASK [Configure and load kernel modules (all nodes)] **********************************************************************************************************
+2023-01-30 11:01:49,866 p=2591811 u=david n=ansible | [WARNING]: Consider using 'become', 'become_method', and 'become_user' rather than running sudo
+
+2023-01-30 11:01:49,866 p=2591811 u=david n=ansible | changed: [rpmaster]
+2023-01-30 11:01:49,899 p=2591811 u=david n=ansible | changed: [rpnode1]
+2023-01-30 11:01:49,922 p=2591811 u=david n=ansible | changed: [rpnode2]
+2023-01-30 11:01:50,948 p=2591811 u=david n=ansible | changed: [rpnode3]
+2023-01-30 11:01:51,123 p=2591811 u=david n=ansible | changed: [rpnode4]
+2023-01-30 11:01:51,138 p=2591811 u=david n=ansible | TASK [Bridge network iptables and set kernel parameters] ******************************************************************************************************
+2023-01-30 11:01:51,983 p=2591811 u=david n=ansible | changed: [rpmaster]
+2023-01-30 11:01:52,002 p=2591811 u=david n=ansible | changed: [rpnode1]
+2023-01-30 11:01:52,030 p=2591811 u=david n=ansible | changed: [rpnode2]
+2023-01-30 11:01:52,918 p=2591811 u=david n=ansible | changed: [rpnode3]
+2023-01-30 11:01:53,330 p=2591811 u=david n=ansible | changed: [rpnode4]
+2023-01-30 11:01:53,358 p=2591811 u=david n=ansible | TASK [remove docker.gpg file (for idempotency)] ***************************************************************************************************************
+2023-01-30 11:01:54,128 p=2591811 u=david n=ansible | ok: [rpmaster]
+2023-01-30 11:01:54,152 p=2591811 u=david n=ansible | ok: [rpnode1]
+2023-01-30 11:01:54,180 p=2591811 u=david n=ansible | ok: [rpnode2]
+2023-01-30 11:01:55,013 p=2591811 u=david n=ansible | ok: [rpnode3]
+2023-01-30 11:01:55,570 p=2591811 u=david n=ansible | ok: [rpnode4]
+2023-01-30 11:01:55,591 p=2591811 u=david n=ansible | TASK [add docker repo key] ************************************************************************************************************************************
+2023-01-30 11:02:14,334 p=2591811 u=david n=ansible | changed: [rpnode2]
+2023-01-30 11:02:14,474 p=2591811 u=david n=ansible | changed: [rpmaster]
+2023-01-30 11:02:14,748 p=2591811 u=david n=ansible | changed: [rpnode1]
+2023-01-30 11:02:37,617 p=2591811 u=david n=ansible | changed: [rpnode3]
+2023-01-30 11:02:39,270 p=2591811 u=david n=ansible | changed: [rpnode4]
+2023-01-30 11:02:39,280 p=2591811 u=david n=ansible | TASK [Update the Ubuntu servers] ******************************************************************************************************************************
+2023-01-30 11:02:46,068 p=2591811 u=david n=ansible | changed: [rpnode2]
+2023-01-30 11:02:46,091 p=2591811 u=david n=ansible | changed: [rpnode1]
+2023-01-30 11:02:46,217 p=2591811 u=david n=ansible | changed: [rpmaster]
+2023-01-30 11:02:53,516 p=2591811 u=david n=ansible | changed: [rpnode3]
+2023-01-30 11:03:00,506 p=2591811 u=david n=ansible | changed: [rpnode4]
+2023-01-30 11:03:00,515 p=2591811 u=david n=ansible | TASK [install containerd] *************************************************************************************************************************************
+2023-01-30 11:03:31,876 p=2591811 u=david n=ansible | changed: [rpnode2]
+2023-01-30 11:03:32,277 p=2591811 u=david n=ansible | changed: [rpmaster]
+2023-01-30 11:03:34,099 p=2591811 u=david n=ansible | changed: [rpnode1]
+2023-01-30 11:03:59,944 p=2591811 u=david n=ansible | changed: [rpnode3]
+2023-01-30 11:04:18,487 p=2591811 u=david n=ansible | changed: [rpnode4]
+2023-01-30 11:04:18,496 p=2591811 u=david n=ansible | TASK [configure containerd and start] *************************************************************************************************************************
+2023-01-30 11:04:20,956 p=2591811 u=david n=ansible | changed: [rpnode2]
+2023-01-30 11:04:20,965 p=2591811 u=david n=ansible | changed: [rpnode1]
+2023-01-30 11:04:20,997 p=2591811 u=david n=ansible | changed: [rpmaster]
+2023-01-30 11:04:24,060 p=2591811 u=david n=ansible | changed: [rpnode3]
+2023-01-30 11:04:26,091 p=2591811 u=david n=ansible | changed: [rpnode4]
+2023-01-30 11:04:26,135 p=2591811 u=david n=ansible | PLAY RECAP ****************************************************************************************************************************************************
+2023-01-30 11:04:26,136 p=2591811 u=david n=ansible | rpmaster                   : ok=24   changed=21   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-01-30 11:04:26,136 p=2591811 u=david n=ansible | rpnode1                    : ok=24   changed=21   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-01-30 11:04:26,136 p=2591811 u=david n=ansible | rpnode2                    : ok=24   changed=21   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-01-30 11:04:26,136 p=2591811 u=david n=ansible | rpnode3                    : ok=24   changed=21   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-01-30 11:04:26,137 p=2591811 u=david n=ansible | rpnode4                    : ok=24   changed=21   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-01-30 11:13:05,686 p=2595315 u=david n=ansible | PLAY [Kubeadm initialization] *********************************************************************************************************************************
+2023-01-30 11:13:05,697 p=2595315 u=david n=ansible | TASK [Gathering Facts] ****************************************************************************************************************************************
+2023-01-30 11:13:11,477 p=2595315 u=david n=ansible | ok: [rpmaster]
+2023-01-30 11:13:11,522 p=2595315 u=david n=ansible | TASK [Initialize] *********************************************************************************************************************************************
+2023-01-30 11:15:05,252 p=2595315 u=david n=ansible | changed: [rpmaster]
+2023-01-30 11:15:05,270 p=2595315 u=david n=ansible | PLAY RECAP ****************************************************************************************************************************************************
+2023-01-30 11:15:05,271 p=2595315 u=david n=ansible | rpmaster                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-01-30 11:31:32,317 p=2596440 u=david n=ansible | PLAY [Join nodes to the Kubernetes cluster] *******************************************************************************************************************
+2023-01-30 11:31:32,328 p=2596440 u=david n=ansible | TASK [Gathering Facts] ****************************************************************************************************************************************
+2023-01-30 11:31:38,138 p=2596440 u=david n=ansible | ok: [rpnode2]
+2023-01-30 11:31:38,140 p=2596440 u=david n=ansible | ok: [rpnode1]
+2023-01-30 11:31:43,968 p=2596440 u=david n=ansible | ok: [rpnode3]
+2023-01-30 11:31:44,889 p=2596440 u=david n=ansible | ok: [rpnode4]
+2023-01-30 11:31:44,925 p=2596440 u=david n=ansible | TASK [Copy join script] ***************************************************************************************************************************************
+2023-01-30 11:31:47,409 p=2596440 u=david n=ansible | changed: [rpnode2]
+2023-01-30 11:31:47,413 p=2596440 u=david n=ansible | changed: [rpnode1]
+2023-01-30 11:31:49,503 p=2596440 u=david n=ansible | changed: [rpnode4]
+2023-01-30 11:31:49,561 p=2596440 u=david n=ansible | changed: [rpnode3]
+2023-01-30 11:31:49,571 p=2596440 u=david n=ansible | TASK [Run join script] ****************************************************************************************************************************************
+2023-01-30 11:32:07,386 p=2596440 u=david n=ansible | changed: [rpnode2]
+2023-01-30 11:32:07,849 p=2596440 u=david n=ansible | changed: [rpnode3]
+2023-01-30 11:32:07,917 p=2596440 u=david n=ansible | changed: [rpnode1]
+2023-01-30 11:32:13,758 p=2596440 u=david n=ansible | changed: [rpnode4]
+2023-01-30 11:32:13,796 p=2596440 u=david n=ansible | PLAY RECAP ****************************************************************************************************************************************************
+2023-01-30 11:32:13,797 p=2596440 u=david n=ansible | rpnode1                    : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-01-30 11:32:13,797 p=2596440 u=david n=ansible | rpnode2                    : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-01-30 11:32:13,797 p=2596440 u=david n=ansible | rpnode3                    : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-01-30 11:32:13,798 p=2596440 u=david n=ansible | rpnode4                    : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-01-30 11:42:13,427 p=2597240 u=david n=ansible | PLAY [Set up after master initialization] *********************************************************************************************************************
+2023-01-30 11:42:13,439 p=2597240 u=david n=ansible | TASK [Gathering Facts] ****************************************************************************************************************************************
+2023-01-30 11:42:19,807 p=2597240 u=david n=ansible | ok: [rpmaster]
+2023-01-30 11:42:19,822 p=2597240 u=david n=ansible | TASK [Move config to ubuntu user and permissions] *************************************************************************************************************
+2023-01-30 11:42:20,802 p=2597240 u=david n=ansible | [WARNING]: Consider using the file module with state=directory rather than running 'mkdir'.  If you need to use command because file is insufficient you can
+add 'warn: false' to this command task or set 'command_warnings=False' in ansible.cfg to get rid of this message.
+
+2023-01-30 11:42:20,803 p=2597240 u=david n=ansible | changed: [rpmaster]
+2023-01-30 11:42:20,836 p=2597240 u=david n=ansible | PLAY RECAP ****************************************************************************************************************************************************
+2023-01-30 11:42:20,836 p=2597240 u=david n=ansible | rpmaster                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

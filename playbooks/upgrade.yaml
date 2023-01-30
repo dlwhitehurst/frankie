@@ -1,0 +1,18 @@
+- name: Update, Upgrade, and Reboot
+  hosts: master
+  become: true 
+  tasks:
+
+    - name: Update the Ubuntu servers 
+      ansible.builtin.command: apt update 
+      become: true
+
+    - name: Upgrade Ubuntu System Packages
+      ansible.builtin.apt:
+        upgrade: full
+
+    - name: Reboot
+      ansible.builtin.reboot:
+        reboot_timeout: 1200
+        
+

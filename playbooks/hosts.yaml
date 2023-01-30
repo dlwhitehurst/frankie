@@ -1,0 +1,16 @@
+- name: Machines in all /etc/hosts file 
+  hosts: nodes 
+  become: true
+  tasks:
+    - name: Append all hosts 
+      ansible.builtin.shell: |
+        echo "192.168.1.19 rpmaster rpmaster" >> /etc/hosts
+        echo "192.168.1.12 rpnode1 rpnode1" >> /etc/hosts
+        echo "192.168.1.14 rpnode2 rpnode2" >> /etc/hosts
+        echo "192.168.1.17 rpnode3 rpnode3" >> /etc/hosts
+        echo "192.168.1.18 rpnode4 rpnode4" >> /etc/hosts
+      args:
+        executable: /bin/bash
+
+
+        

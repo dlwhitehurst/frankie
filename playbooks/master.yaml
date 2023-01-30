@@ -1,0 +1,17 @@
+- name: Kubeadm initialization 
+  hosts: master 
+  become: true
+  tasks:
+    - name: Initialize
+      ansible.builtin.shell: |
+        # kubeadm reset
+        # systemctl restart kubelet
+        kubeadm init --kubernetes-version=v1.26.1 --pod-network-cidr=10.150.0.0/16 > /home/ubuntu/init.out
+      args:
+        executable: /bin/bash
+
+          # NOTE maybe above is the idempotent version! It's not!
+          # kubeadm reset requires a yes proceed on prompt then systemctl restart kubelet
+          # the beast pod network was 10.244.0.0/16 and flannel.yaml needs edit
+          # for custom CIDR 10.150.0.0/16
+       

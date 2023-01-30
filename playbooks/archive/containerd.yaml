@@ -1,0 +1,15 @@
+- name: (TEMP) Containerd Download and Verification 
+  hosts: master 
+  become: true
+  tasks:
+    - name: Get Latest Containerd 1.6.15
+      ansible.builtin.get_url:
+        url: https://github.com/containerd/containerd/releases/download/v1.6.15/containerd-1.6.15-linux-arm64.tar.gz
+        dest: .
+        
+          # and don't forget the validation hash
+        
+    - name: Get SHA256 checksum for Containerd 1.6.15
+      ansible.builtin.get_url:
+        url: https://github.com/containerd/containerd/releases/download/v1.6.15/containerd-1.6.15-linux-arm64.tar.gz.sha256sum 
+        dest: .
